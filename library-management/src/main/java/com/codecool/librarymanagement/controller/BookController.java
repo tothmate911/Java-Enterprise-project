@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
 public class BookController {
 
@@ -18,7 +17,7 @@ public class BookController {
         this.bookDao = bookDao;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/books")
     public List<Book> fetchBooksByMongo(){
         return bookDao.getBookList();
     }

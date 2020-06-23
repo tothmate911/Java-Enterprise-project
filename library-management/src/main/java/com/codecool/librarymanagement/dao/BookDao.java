@@ -14,8 +14,11 @@ public class BookDao {
     private BookApiService bookApiService;
 
     private List<Book> bookList = new ArrayList<>();
+
     private List<String> categories = new ArrayList<>(
-            Arrays.asList("csharp, java, javascript")
+            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
+                    "angular", "android", "django", "fsharp", "gimp", "google",
+                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
     );
 
     public BookDao(BookApiService bookApiService) {
@@ -24,7 +27,10 @@ public class BookDao {
 
     public void initialise() {
         for (String category : categories) {
-            bookList.addAll(bookApiService.getBookByCategory(category));
+            for (Book book : bookApiService.getBookByCategory(category)) {
+                book.setCategory(category);
+                bookList.add(book);
+            }
         }
     }
 

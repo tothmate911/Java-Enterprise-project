@@ -4,45 +4,56 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Book {
 
-	@JsonProperty("image")
-	private String image;
+    private String category;
 
-	@JsonProperty("price")
-	private String price;
+    public String getCategory() {
+        return category;
+    }
 
-	@JsonProperty("subtitle")
-	private String subtitle;
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	@JsonProperty("isbn13")
-	private String isbn13;
 
-	@JsonProperty("title")
-	private String title;
+    @JsonProperty("image")
+    private String image;
 
-	@JsonProperty("url")
-	private String url;
+    @JsonProperty("price")
+    private String price;
 
-	public String getImage(){
-		return image;
-	}
+    @JsonProperty("subtitle")
+    private String subtitle;
 
-	public String getPrice(){
-		return price;
-	}
+    @JsonProperty("isbn13")
+    private String isbn13;
 
-	public String getSubtitle(){
-		return subtitle;
-	}
+    @JsonProperty("title")
+    private String title;
 
-	public String getIsbn13(){
-		return isbn13;
-	}
+    @JsonProperty("url")
+    private String url;
 
-	public String getTitle(){
-		return title;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public String getUrl(){
-		return url;
-	}
+    public String getPrice() {
+        return price;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public String getIsbn13() {
+        return isbn13;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }
