@@ -1,6 +1,7 @@
 package com.codecool.librarymanagement.controller;
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.generated.Book;
+import com.codecool.librarymanagement.generated.BooksItem;
 import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +28,9 @@ public class BookController {
     }*/
 
     @GetMapping("/test")
-    public Book fetchBooksByMongo(){
-        bookDao.setBookList(bookApiService.getBookByMongo().getBooks());
-        bookDao.printBooksItem();
+    public BooksItem fetchBooksByMongo(){
+       // bookDao.setBookList(bookApiService.getBookByMongo().getBooks());
 
-        return bookApiService.getBookByMongo();
+        return bookDao.getBookList().get(1);
     }
-
 }

@@ -21,4 +21,7 @@ public class BookDao {
         System.out.println(bookList);
     }
 
+    public List<BooksItem> getBookList() {
+        return bookList;
+    }
 }
