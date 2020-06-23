@@ -1,18 +1,23 @@
 package com.codecool.librarymanagement.service;
-import com.codecool.librarymanagement.generated.Book;
+
+import com.codecool.librarymanagement.model.generated.Book;
+import com.codecool.librarymanagement.model.generated.BooksResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+import java.util.Objects;
+
 @Service
 public class BookApiService {
 
-    public Book getBookByMongo(){
+    public List<Book> getBookByCategory(String category) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Book> bookResponseEntity = restTemplate.exchange("https://api.itbook.store/1.0/search/mongo",
-                HttpMethod.GET, null, Book.class);
-        return bookResponseEntity.getBody();
-
+        String url = "https://api.itbook.store/1.0/search/" + category;
+        ResponseEntity<BooksResponse> booksResponseEntity = restTemplate.exchange(url, HttpMethod.GET,
+                null, BooksResponse.class);
+        return Objects.requireNonNull(booksResponseEntity.getBody()).getBooks();
     }
 }
