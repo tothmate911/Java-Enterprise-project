@@ -8,9 +8,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BookApiService {
 
-    public Book getBookByMongo(String mongo){
+    public Book getBookByMongo(){
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Book> bookResponseEntity = restTemplate.exchange("https://api.itbook.store/1.0/search/"+mongo,
+        ResponseEntity<Book> bookResponseEntity = restTemplate.exchange("https://api.itbook.store/1.0/search/mongo",
                 HttpMethod.GET, null, Book.class);
         return bookResponseEntity.getBody();
 
