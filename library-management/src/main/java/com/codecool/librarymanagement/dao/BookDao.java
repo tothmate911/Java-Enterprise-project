@@ -39,19 +39,12 @@ public class BookDao {
         }
     }
 
-    public List<DetailedBook> sortBooksByParameter(){
-
-       /* Comparator<DetailedBook> compare = (DetailedBook book1, DetailedBook book2) ->
-                book1.getTitle().compareTo(book2.getTitle());
-        detailedBookList.sort(compare);
-        return detailedBookList;*/
+    public List<DetailedBook> sortBooksByParameter() {
         return detailedBookList.stream()
                 .sorted(Comparator.comparing(DetailedBook::getTitle))
                 .collect(Collectors.toList());
-
-
-
     }
+
 
     public List<Book> getBookList() {
         return bookList;
@@ -59,5 +52,9 @@ public class BookDao {
 
     public List<DetailedBook> getDetailedBookList() {
         return detailedBookList;
+    }
+
+    public List<String> getCategories() {
+        return categories;
     }
 }
