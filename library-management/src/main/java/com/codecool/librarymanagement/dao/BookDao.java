@@ -5,9 +5,8 @@ import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class BookDao {
@@ -38,6 +37,20 @@ public class BookDao {
         for (Book book : bookList) {
             detailedBookList.add(bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory()));
         }
+    }
+
+    public List<DetailedBook> sortBooksByParameter(){
+
+       /* Comparator<DetailedBook> compare = (DetailedBook book1, DetailedBook book2) ->
+                book1.getTitle().compareTo(book2.getTitle());
+        detailedBookList.sort(compare);
+        return detailedBookList;*/
+        return detailedBookList.stream()
+                .sorted(Comparator.comparing(DetailedBook::getTitle))
+                .collect(Collectors.toList());
+
+
+
     }
 
     public List<Book> getBookList() {
