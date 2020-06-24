@@ -44,16 +44,25 @@ public class BookDao {
         return categories;
     }
 
-    public List<Book> getBooks(String category) {
+    public List<Book> getBooksByCategory(String category) {
         return bookList.stream()
                 .filter(book -> book.getCategory().equals(category))
                 .collect(Collectors.toList());
     }
 
     public List<Book> getBooksBySearchedString(String searchedString) {
-        return bookList.stream()
-                .filter(book -> book.getTitle().toLowerCase().contains(searchedString.toLowerCase())
-                || book.getSubtitle().toLowerCase().contains(searchedString.toLowerCase()))
+        return getBooksBySearchedWordFromList(searchedString, bookList);
+    }
+
+    public List<Book> getBooksByCategoryAndSearchedString(String category, String search) {
+        return getBooksBySearchedWordFromList(search, getBooksByCategory(category));
+    }
+
+    private List<Book> getBooksBySearchedWordFromList(String searchedString, List<Book> books) {
+        String stringLowerCase = searchedString.toLowerCase();
+        return books.stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(stringLowerCase)
+                        || book.getSubtitle().toLowerCase().contains(stringLowerCase))
                 .collect(Collectors.toList());
     }
 }

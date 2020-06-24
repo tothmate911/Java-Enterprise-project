@@ -31,7 +31,7 @@ public class BookController {
 
     @GetMapping("/books/category/{category}")
     public List<Book> getBooksByCategory(@PathVariable String category) {
-        return bookDao.getBooks(category);
+        return bookDao.getBooksByCategory(category);
     }
 
     @GetMapping("/books/searchby/{search}")
@@ -40,8 +40,9 @@ public class BookController {
     }
 
     @GetMapping("/books/category/{category}/searchby/{search}")
-    public List<Book> searchInCategory(@PathVariable("category") String category, @PathVariable("search") String search) {
-        return null;
+    public List<Book> searchInCategory(@PathVariable("category") String category,
+                                       @PathVariable("search") String search) {
+        return bookDao.getBooksByCategoryAndSearchedString(category, search);
     }
 
     @GetMapping("/books/sort")
@@ -53,6 +54,5 @@ public class BookController {
     public List<Book> sortInCategory(@PathVariable("category") String category, @PathVariable("sort") String search) {
         return null;
     }
-
 
 }
