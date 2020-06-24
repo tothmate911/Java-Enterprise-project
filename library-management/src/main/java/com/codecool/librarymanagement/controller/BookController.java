@@ -29,10 +29,14 @@ public class BookController {
         return bookDao.getCategories();
     }
 
+    @GetMapping("/books/category/{category}")
+    public List<Book> getBooksByCategory(@PathVariable String category) {
+        return bookDao.getBooks(category);
+    }
+
     @GetMapping("/books/searchby/{search}")
     public List<Book> sortBy(@PathVariable("search") String search) {
         return null;
-
     }
 
     @GetMapping("/books/category/{category}/searchby/{search}")

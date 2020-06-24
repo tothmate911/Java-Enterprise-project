@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class BookDao {
@@ -40,5 +41,11 @@ public class BookDao {
 
     public List<String> getCategories() {
         return categories;
+    }
+
+    public List<Book> getBooks(String category) {
+         return bookList.stream()
+                .filter(book -> book.getCategory().equals(category))
+                .collect(Collectors.toList());
     }
 }
