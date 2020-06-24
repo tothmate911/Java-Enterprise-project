@@ -21,7 +21,7 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public List<Book> getAllBooks() {
+    public List<DetailedBook> getAllBooks() {
         return bookDao.getDetailedBookList();
     }
 
