@@ -42,19 +42,16 @@ public class BookController {
     @GetMapping("/books/category/{category}/searchby/{search}")
     public List<Book> searchInCategory(@PathVariable("category") String category, @PathVariable("search") String search) {
         return null;
-
     }
 
     @GetMapping("/books/sort")
     public List<Book> sortBy() {
         return null;
-
     }
 
     @GetMapping("/books/category/{category}/sortby/{sort}")
     public List<Book> sortInCategory(@PathVariable("category") String category, @PathVariable("sort") String search) {
         return null;
-
     }
 
 
