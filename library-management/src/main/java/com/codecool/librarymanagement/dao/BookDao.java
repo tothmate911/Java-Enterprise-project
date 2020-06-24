@@ -1,4 +1,5 @@
 package com.codecool.librarymanagement.dao;
+
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
@@ -41,37 +42,40 @@ public class BookDao {
         }
     }
 
-    public List<DetailedBook> sortBooksByParameter() {
+    public List<DetailedBook> sortAllBooks() {
         return detailedBookList.stream()
                 .sorted(Comparator.comparing(DetailedBook::getTitle))
                 .collect(Collectors.toList());
     }
 
-    public List<Book> getBookList() {
-        return bookList;
+    public List<DetailedBook> sortCategoryBooks(String category) {
+        return getBooksByCategory(category).stream()
+                .sorted(Comparator.comparing(DetailedBook::getTitle))
+                .collect(Collectors.toList());
     }
 
-    public List<Book> getBooksByCategory(String category) {
-        return bookList.stream()
+    public List<DetailedBook> getBooksByCategory(String category) {
+        return detailedBookList.stream()
                 .filter(book -> book.getCategory().equals(category))
                 .collect(Collectors.toList());
     }
 
-    public List<Book> getBooksBySearchedString(String searchedString) {
-        return getBooksBySearchedWordFromList(searchedString, bookList);
+    public List<DetailedBook> getBooksBySearchedString(String searchedString) {
+        return getBooksBySearchedWordFromList(searchedString, detailedBookList);
     }
 
-    public List<Book> getBooksByCategoryAndSearchedString(String category, String search) {
+    public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search) {
         return getBooksBySearchedWordFromList(search, getBooksByCategory(category));
     }
 
-    private List<Book> getBooksBySearchedWordFromList(String searchedString, List<Book> books) {
+    private List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> books) {
         String stringLowerCase = searchedString.toLowerCase();
-        return books.stream()
+        return detailedBookList.stream()
                 .filter(book -> book.getTitle().toLowerCase().contains(stringLowerCase)
                         || book.getSubtitle().toLowerCase().contains(stringLowerCase))
                 .collect(Collectors.toList());
     }
+
 
     public List<DetailedBook> getDetailedBookList() {
         return detailedBookList;

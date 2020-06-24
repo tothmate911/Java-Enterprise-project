@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class LibraryManagementApplication {
 
-    private BookDao bookDao;
+    private final BookDao bookDao;
 
     public LibraryManagementApplication(BookDao bookDao) {
         this.bookDao = bookDao;
