@@ -20,14 +20,13 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public List<Book> fetchBooksByMongo() {
+    public List<Book> getAllBooks() {
         return bookDao.getBookList();
     }
 
     @GetMapping("/categories")
     public List<String> showAllCategories() {
-        return null;
-
+        return bookDao.getCategories();
     }
 
     @GetMapping("/books/searchby/{search}")

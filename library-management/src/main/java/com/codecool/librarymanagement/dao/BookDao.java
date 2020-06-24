@@ -37,4 +37,8 @@ public class BookDao {
     public List<Book> getBookList() {
         return bookList;
     }
+
+    public List<String> getCategories() {
+        return categories;
+    }
 }

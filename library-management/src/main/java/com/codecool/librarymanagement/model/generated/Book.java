@@ -14,7 +14,6 @@ public class Book {
         this.category = category;
     }
 
-
     @JsonProperty("image")
     private String image;
 
