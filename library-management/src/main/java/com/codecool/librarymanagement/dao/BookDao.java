@@ -16,10 +16,14 @@ public class BookDao {
 
     private List<Book> bookList = new ArrayList<>();
 
+//    private List<String> categories = new ArrayList<>(
+//            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
+//                    "angular", "android", "django", "fsharp", "gimp", "google",
+//                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
+//    );
+
     private List<String> categories = new ArrayList<>(
-            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
-                    "angular", "android", "django", "fsharp", "gimp", "google",
-                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
+            Arrays.asList("actionscript")
     );
 
     public BookDao(BookApiService bookApiService) {
@@ -44,8 +48,15 @@ public class BookDao {
     }
 
     public List<Book> getBooks(String category) {
-         return bookList.stream()
+        return bookList.stream()
                 .filter(book -> book.getCategory().equals(category))
+                .collect(Collectors.toList());
+    }
+
+    public List<Book> getBooksBySearchedString(String searchedString) {
+        return bookList.stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(searchedString.toLowerCase())
+                || book.getSubtitle().toLowerCase().contains(searchedString.toLowerCase()))
                 .collect(Collectors.toList());
     }
 }

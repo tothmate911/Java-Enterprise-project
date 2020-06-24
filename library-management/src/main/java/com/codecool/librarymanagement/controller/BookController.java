@@ -36,7 +36,7 @@ public class BookController {
 
     @GetMapping("/books/searchby/{search}")
     public List<Book> sortBy(@PathVariable("search") String search) {
-        return null;
+        return bookDao.getBooksBySearchedString(search);
     }
 
     @GetMapping("/books/category/{category}/searchby/{search}")
