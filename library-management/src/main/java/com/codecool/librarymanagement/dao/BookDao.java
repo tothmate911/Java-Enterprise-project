@@ -16,15 +16,12 @@ public class BookDao {
 
     private List<Book> bookList = new ArrayList<>();
 
-//    private List<String> categories = new ArrayList<>(
-//            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
-//                    "angular", "android", "django", "fsharp", "gimp", "google",
-//                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
-//    );
-
     private List<String> categories = new ArrayList<>(
-            Arrays.asList("actionscript")
+            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
+                    "angular", "android", "django", "fsharp", "gimp", "google",
+                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
     );
+
 
     public BookDao(BookApiService bookApiService) {
         this.bookApiService = bookApiService;
