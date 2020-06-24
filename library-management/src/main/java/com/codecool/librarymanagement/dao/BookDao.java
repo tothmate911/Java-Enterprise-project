@@ -1,4 +1,5 @@
 package com.codecool.librarymanagement.dao;
+
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
@@ -33,12 +34,9 @@ public class BookDao {
         }
     }
 
-    public void initializeDetailedBooks(){
+    public void initializeDetailedBooks() {
         for (Book book : bookList) {
-           detailedBookList.add(bookApiService.getDetailedBooksByIsbn(book.getIsbn13()));
-        }
-        for (DetailedBook detailedBook : detailedBookList) {
-            System.out.println(detailedBook);
+            detailedBookList.add(bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory()));
         }
     }
 

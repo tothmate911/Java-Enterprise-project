@@ -23,11 +23,12 @@ public class BookApiService {
     }
 
 
-    public DetailedBook getDetailedBooksByIsbn(String isbn13){
+    public DetailedBook getDetailedBooksByIsbn(String isbn13, String category) {
         RestTemplate restTemplate = new RestTemplate();
-        String url =  "https://api.itbook.store/1.0/books/" + isbn13;
+        String url = "https://api.itbook.store/1.0/books/" + isbn13;
         ResponseEntity<DetailedBook> bookResponseEntity = restTemplate.exchange(url, HttpMethod.GET,
                 null, DetailedBook.class);
+        Objects.requireNonNull(bookResponseEntity.getBody()).setCategory(category);
         return Objects.requireNonNull(bookResponseEntity.getBody());
 
     }
