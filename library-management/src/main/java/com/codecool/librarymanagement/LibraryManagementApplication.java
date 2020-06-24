@@ -22,5 +22,6 @@ public class LibraryManagementApplication {
     @PostConstruct
     public void initialise() {
         bookDao.initialise();
+        bookDao.initializeDetailedBooks();
     }
 }

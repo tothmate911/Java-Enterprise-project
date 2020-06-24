@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DetailedBook{
 
+	private String category;
+
 	@JsonProperty("image")
 	private String image;
 
@@ -51,6 +53,14 @@ public class DetailedBook{
 
 	@JsonProperty("desc")
 	private String desc;
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public void setImage(String image){
 		this.image = image;
@@ -183,8 +193,9 @@ public class DetailedBook{
 	@Override
  	public String toString(){
 		return 
-			"DetailedBook{" + 
-			"image = '" + image + '\'' + 
+			"DetailedBook{" +
+			"category = '" + category +'\'' +
+			",image = '" + image + '\'' +
 			",year = '" + year + '\'' + 
 			",rating = '" + rating + '\'' + 
 			",language = '" + language + '\'' + 
