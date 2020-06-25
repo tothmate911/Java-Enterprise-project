@@ -5,10 +5,7 @@ import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -82,6 +79,7 @@ public class BookDao {
     }
 
     public List<String> getCategories() {
+        Collections.sort(categories);
         return categories;
     }
 }
