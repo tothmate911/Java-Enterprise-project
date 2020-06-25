@@ -5,6 +5,7 @@ import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.stereotype.Component;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -82,4 +83,19 @@ public class BookDao {
         Collections.sort(categories);
         return categories;
     }
+
+    public TreeMap<String, List<String>> orderCategoriesToTreeMap() {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String category : categories) {
+            String firstChar = String.valueOf(category.charAt(0));
+            if (map.get(firstChar.toUpperCase()) == null) {
+                map.put(firstChar.toUpperCase(), new ArrayList(Arrays.asList(category)));
+            } else {
+                map.get(firstChar.toUpperCase()).add(category);
+            }
+        }
+        return new TreeMap(map);
+    }
+
 }

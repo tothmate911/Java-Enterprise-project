@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 @RestController
 @RequestMapping("/books")
@@ -25,8 +27,8 @@ public class BookController {
     }
 
     @GetMapping("/categories")
-    public List<String> showAllCategories() {
-        return bookDao.getCategories();
+    public TreeMap<String, List<String>> showAllCategories() {
+        return bookDao.orderCategoriesToTreeMap();
     }
 
     @GetMapping("/category/{category}")
