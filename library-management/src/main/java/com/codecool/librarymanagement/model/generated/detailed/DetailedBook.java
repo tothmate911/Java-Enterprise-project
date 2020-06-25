@@ -28,7 +28,6 @@ public class DetailedBook{
 	@JsonProperty("title")
 	private String title;
 
-	@JsonProperty("url")
 	private String url;
 
 	@JsonProperty("pages")
