@@ -82,4 +82,11 @@ public class BookDao {
         Collections.sort(categories);
         return categories;
     }
+
+    public DetailedBook getBookById(String id) {
+        return detailedBookList.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
 }

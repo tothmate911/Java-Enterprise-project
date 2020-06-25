@@ -54,4 +54,10 @@ public class BookController {
     public List<DetailedBook> sortInCategory(@PathVariable("category") String category) {
         return bookDao.sortCategoryBooks(category);
     }
+
+    @GetMapping("/book/{id}")
+    public DetailedBook getBook(@PathVariable("id") String id) {
+        return bookDao.getBookById(id);
+    }
+
 }
