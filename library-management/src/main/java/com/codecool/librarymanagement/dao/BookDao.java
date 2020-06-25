@@ -84,6 +84,13 @@ public class BookDao {
         return categories;
     }
 
+    public DetailedBook getBookById(String id) {
+        return detailedBookList.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
     public TreeMap<String, List<String>> orderCategoriesToTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
 
