@@ -65,14 +65,14 @@ public class BookDao {
         return getBooksBySearchedWordFromList(search, getBooksByCategory(category));
     }
 
-    private List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> books) {
+    private List<DetailedBook> getBooksBySearchedWordFromList(String searchedString,
+                                                              List<DetailedBook> booksToSearchFrom) {
         String stringLowerCase = searchedString.toLowerCase();
-        return detailedBookList.stream()
+        return booksToSearchFrom.stream()
                 .filter(book -> book.getTitle().toLowerCase().contains(stringLowerCase)
                         || book.getSubtitle().toLowerCase().contains(stringLowerCase))
                 .collect(Collectors.toList());
     }
-
 
     public List<DetailedBook> getDetailedBookList() {
         return detailedBookList;
