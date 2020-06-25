@@ -28,7 +28,7 @@ public class BookController {
 
     @GetMapping("/categories")
     public TreeMap<String, List<String>> showAllCategories() {
-        return bookDao.orderCategoriesToTreeMap();
+        return bookDao.orderCategoriesWithTreeMap();
     }
 
     @GetMapping("/category/{category}")

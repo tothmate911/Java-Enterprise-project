@@ -91,7 +91,7 @@ public class BookDao {
                 .orElse(null);
     }
 
-    public TreeMap<String, List<String>> orderCategoriesToTreeMap() {
+    public TreeMap<String, List<String>> orderCategoriesWithTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
 
         for (String category : categories) {
@@ -104,5 +104,4 @@ public class BookDao {
         }
         return new TreeMap(map);
     }
-
 }
