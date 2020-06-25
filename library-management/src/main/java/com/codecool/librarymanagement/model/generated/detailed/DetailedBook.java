@@ -2,9 +2,13 @@ package com.codecool.librarymanagement.model.generated.detailed;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.UUID;
+
 public class DetailedBook{
 
-	private String category;
+	private String id = UUID.randomUUID().toString();
+
+    private String category;
 
 	@JsonProperty("image")
 	private String image;
@@ -54,7 +58,11 @@ public class DetailedBook{
 	@JsonProperty("desc")
 	private String desc;
 
-	public String getCategory() {
+    public String getId() {
+        return id;
+    }
+
+    public String getCategory() {
 		return category;
 	}
 
