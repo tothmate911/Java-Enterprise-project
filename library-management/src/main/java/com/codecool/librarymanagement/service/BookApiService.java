@@ -31,7 +31,5 @@ public class BookApiService {
         Objects.requireNonNull(bookResponseEntity.getBody()).setCategory(category);
         Objects.requireNonNull(bookResponseEntity.getBody()).setUrl("/book/" + isbn13);
         return Objects.requireNonNull(bookResponseEntity.getBody());
-
     }
-
 }
