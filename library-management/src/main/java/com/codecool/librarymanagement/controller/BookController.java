@@ -62,4 +62,9 @@ public class BookController {
         return bookDao.getBookById(id);
     }
 
+    @GetMapping("/book/{isbn13")
+    public DetailedBook getBookByIsbn(@PathVariable String isbn13) {
+        return bookDao.getBookByIsbn13(isbn13);
+    }
+
 }

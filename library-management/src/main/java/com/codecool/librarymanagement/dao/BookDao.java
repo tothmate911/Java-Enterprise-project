@@ -104,4 +104,11 @@ public class BookDao {
         }
         return new TreeMap(map);
     }
+
+    public DetailedBook getBookByIsbn13(String isbn13) {
+        return detailedBookList.stream()
+                .filter(book -> book.getIsbn13().equals(isbn13))
+                .findFirst()
+                .orElse(null);
+    }
 }
