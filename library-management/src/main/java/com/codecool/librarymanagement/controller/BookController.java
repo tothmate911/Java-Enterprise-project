@@ -3,23 +3,20 @@ package com.codecool.librarymanagement.controller;
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 @RestController
 @RequestMapping("/books")
 @CrossOrigin
 public class BookController {
 
-    private BookDao bookDao;
-
     @Autowired
-    public void setBookApiService(BookDao bookDao) {
-        this.bookDao = bookDao;
-    }
+    @Qualifier("bookDaoMem")
+    private BookDao bookDao;
 
     @GetMapping("/")
     public List<DetailedBook> getAllBooks() {
