@@ -3,7 +3,6 @@ package com.codecool.librarymanagement.dao;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -42,7 +41,11 @@ public class BookDaoJpa implements BookDao {
 
     @Override
     public List<DetailedBook> getBooksBySearchedString(String searchedString) {
-        return bookRepository.findAllByTitleContaining(searchedString);
+        if (searchedString.equals("@")) {
+            return Collections.emptyList();
+        } else {
+            return bookRepository.findAllByTitleContainingIgnoreCase(searchedString);
+        }
     }
 
     @Override

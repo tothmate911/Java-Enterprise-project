@@ -15,7 +15,7 @@ public interface BookRepository extends JpaRepository<DetailedBook, Long> {
 
     List<DetailedBook> findAllByCategory(String category);
 
-    List<DetailedBook> findAllByTitleContaining(String searchedString);
+    List<DetailedBook> findAllByTitleContainingIgnoreCase(String searchedString);
 
     List<DetailedBook> findAllByCategoryAndTitleContaining(String category, String searchedString);
 
