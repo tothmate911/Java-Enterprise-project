@@ -17,7 +17,6 @@ public class BookDaoJpa implements BookDao {
 
     private final BookApiService bookApiService;
     private final List<Book> bookList = new ArrayList<>();
-    private final List<DetailedBook> detailedBookList = new ArrayList<>();
     private final List<String> categories = new ArrayList<>(
             Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
                     "angular", "android", "django", "fsharp", "gimp", "google",
@@ -66,7 +65,7 @@ public class BookDaoJpa implements BookDao {
 
     @Override
     public List<DetailedBook> getBooksBySearchedString(String searchedString) {
-        return bookRepository. findAllByTitleContaining(searchedString);
+        return bookRepository.findAllByTitleContaining(searchedString);
     }
 
     @Override
