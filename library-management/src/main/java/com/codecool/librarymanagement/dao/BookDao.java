@@ -59,7 +59,11 @@ public class BookDao {
     }
 
     public List<DetailedBook> getBooksBySearchedString(String searchedString) {
-        return getBooksBySearchedWordFromList(searchedString, detailedBookList);
+        if (searchedString.equals("@")) {
+            return Collections.emptyList();
+        } else {
+            return getBooksBySearchedWordFromList(searchedString, detailedBookList);
+        }
     }
 
     public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search) {
@@ -74,6 +78,7 @@ public class BookDao {
                         || book.getSubtitle().toLowerCase().contains(stringLowerCase))
                 .collect(Collectors.toList());
     }
+
 
     public List<DetailedBook> getDetailedBookList() {
         return detailedBookList;
