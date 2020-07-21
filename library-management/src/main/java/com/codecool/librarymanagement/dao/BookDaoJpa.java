@@ -1,51 +1,27 @@
 package com.codecool.librarymanagement.dao;
 
-import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
-import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-//@Primary
+@Primary
 @Component
 public class BookDaoJpa implements BookDao {
 
     private BookRepository bookRepository;
-
-    private final BookApiService bookApiService;
-    private final List<Book> bookList = new ArrayList<>();
     private List<String> categories = new ArrayList<>();
 
-    public BookDaoJpa(BookApiService bookApiService, BookRepository bookRepository) {
-        this.bookApiService = bookApiService;
+    public BookDaoJpa(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        initialiseBooks();
-        initializeDetailedBooks();
     }
 
     @Override
     public void initialise(List<String> categories, List<DetailedBook> detailedBookList) {
         this.categories = categories;
         detailedBookList.forEach(book -> bookRepository.save(book));
-    }
-
-    public void initialiseBooks() {
-        for (String category : categories) {
-            for (Book book : bookApiService.getBookByCategory(category)) {
-                book.setCategory(category);
-                bookList.add(book);
-            }
-        }
-    }
-
-    public void initializeDetailedBooks() {
-        for (Book book : bookList) {
-            DetailedBook detailedBook = bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory());
-            bookRepository.save(detailedBook);
-        }
     }
 
     @Override

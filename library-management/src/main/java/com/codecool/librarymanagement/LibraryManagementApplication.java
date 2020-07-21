@@ -21,7 +21,7 @@ public class LibraryManagementApplication {
     private final List<Book> bookList = new ArrayList<>();
     private List<DetailedBook> detailedBookList = new ArrayList<>();
 
-    public LibraryManagementApplication(@Qualifier("bookDaoMem") BookDao bookDao, BookApiService bookApiService) {
+    public LibraryManagementApplication(BookDao bookDao, BookApiService bookApiService) {
         this.bookDao = bookDao;
         this.bookApiService = bookApiService;
     }

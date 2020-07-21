@@ -1,21 +1,21 @@
 package com.codecool.librarymanagement.dao;
 
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Primary
 @Component(value = "bookDaoMem")
 public class BookDaoMem implements BookDao {
 
     private List<DetailedBook> detailedBookList;
     private List<String> categories;
+    private static Long idCounter = 0L;
 
     public void initialise(List<String> categories, List<DetailedBook> detailedBookList) {
         this.categories = categories;
+        detailedBookList.forEach(book -> book.setId(++idCounter));
         this.detailedBookList = detailedBookList;
     }
 
