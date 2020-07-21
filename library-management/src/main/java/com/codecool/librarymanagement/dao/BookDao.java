@@ -7,7 +7,7 @@ import java.util.*;
 
 @Component
 public interface BookDao {
-    public void initialise(List<String> categories, List<DetailedBook> detailedBookList);
+    void initialise(List<String> categories, List<DetailedBook> detailedBookList);
 
     List<DetailedBook> sortAllBooks();
 
@@ -26,4 +26,5 @@ public interface BookDao {
     DetailedBook getBookById(Long id);
 
     TreeMap<String, List<String>> orderCategoriesWithTreeMap();
+
 }

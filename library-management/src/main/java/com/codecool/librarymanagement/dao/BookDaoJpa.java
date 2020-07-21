@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Primary
+//@Primary
 @Component
 public class BookDaoJpa implements BookDao {
 
@@ -17,11 +17,7 @@ public class BookDaoJpa implements BookDao {
 
     private final BookApiService bookApiService;
     private final List<Book> bookList = new ArrayList<>();
-    private final List<String> categories = new ArrayList<>(
-            Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
-                    "angular", "android", "django", "fsharp", "gimp", "google",
-                    "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
-    );
+    private List<String> categories = new ArrayList<>();
 
     public BookDaoJpa(BookApiService bookApiService, BookRepository bookRepository) {
         this.bookApiService = bookApiService;
@@ -31,6 +27,11 @@ public class BookDaoJpa implements BookDao {
     }
 
     @Override
+    public void initialise(List<String> categories, List<DetailedBook> detailedBookList) {
+        this.categories = categories;
+        detailedBookList.forEach(book -> bookRepository.save(book));
+    }
+
     public void initialiseBooks() {
         for (String category : categories) {
             for (Book book : bookApiService.getBookByCategory(category)) {
@@ -40,7 +41,6 @@ public class BookDaoJpa implements BookDao {
         }
     }
 
-    @Override
     public void initializeDetailedBooks() {
         for (Book book : bookList) {
             DetailedBook detailedBook = bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory());
