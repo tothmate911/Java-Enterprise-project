@@ -10,27 +10,27 @@ import java.util.stream.Collectors;
 
 @Component
 public interface BookDao {
-    public void initialise();
+    void initialiseBooks();
 
-    public void initializeDetailedBooks();
+    void initializeDetailedBooks();
 
-    public List<DetailedBook> sortAllBooks();
+    List<DetailedBook> sortAllBooks();
 
-    public List<DetailedBook> sortCategoryBooks(String category);
+    List<DetailedBook> sortCategoryBooks(String category);
 
-    public List<DetailedBook> getBooksByCategory(String category);
+    List<DetailedBook> getBooksByCategory(String category);
 
-    public List<DetailedBook> getBooksBySearchedString(String searchedString);
+    List<DetailedBook> getBooksBySearchedString(String searchedString);
 
-    public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search);
+    List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search);
 
-    public List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> booksToSearchFrom);
+    List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> booksToSearchFrom);
 
-    public List<DetailedBook> getDetailedBookList();
+    List<DetailedBook> getDetailedBookList();
 
-    public List<String> getCategories();
+    List<String> getCategories();
 
-    public DetailedBook getBookById(String id);
+    DetailedBook getBookById(Long id);
 
-    public TreeMap<String, List<String>> orderCategoriesWithTreeMap();
+    TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 }

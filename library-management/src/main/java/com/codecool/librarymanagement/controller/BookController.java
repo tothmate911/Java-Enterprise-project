@@ -59,7 +59,7 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public DetailedBook getBook(@PathVariable("id") String id) {
+    public DetailedBook getBook(@PathVariable("id") Long id) {
         return bookDao.getBookById(id);
     }
 

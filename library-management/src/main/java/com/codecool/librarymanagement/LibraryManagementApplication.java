@@ -9,19 +9,8 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class LibraryManagementApplication {
 
-    private final BookDao bookDao;
-
-    public LibraryManagementApplication(BookDao bookDao) {
-        this.bookDao = bookDao;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(LibraryManagementApplication.class, args);
     }
 
-    @PostConstruct
-    public void initialise() {
-        bookDao.initialise();
-        bookDao.initializeDetailedBooks();
-    }
 }
