@@ -17,7 +17,6 @@ public class BookController {
     private BookDao bookDao;
 
     @Autowired
-    @Qualifier("bookDaoMem")
     public void setBookApiService(BookDao bookDao) {
         this.bookDao = bookDao;
     }

@@ -72,7 +72,7 @@ public class BookDaoMem implements BookDao {
         return getBooksBySearchedWordFromList(search, getBooksByCategory(category));
     }
 
-    public List<DetailedBook> getBooksBySearchedWordFromList(String searchedString,
+    private List<DetailedBook> getBooksBySearchedWordFromList(String searchedString,
                                                               List<DetailedBook> booksToSearchFrom) {
         String stringLowerCase = searchedString.toLowerCase();
         return booksToSearchFrom.stream()
@@ -103,11 +103,11 @@ public class BookDaoMem implements BookDao {
         for (String category : categories) {
             String firstChar = String.valueOf(category.charAt(0));
             if (map.get(firstChar.toUpperCase()) == null) {
-                map.put(firstChar.toUpperCase(), new ArrayList(Arrays.asList(category)));
+                map.put(firstChar.toUpperCase(), new ArrayList<>(Arrays.asList(category)));
             } else {
                 map.get(firstChar.toUpperCase()).add(category);
             }
         }
-        return new TreeMap(map);
+        return new TreeMap<>(map);
     }
 }

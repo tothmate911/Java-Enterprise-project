@@ -24,8 +24,6 @@ public interface BookDao {
 
     List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search);
 
-    List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> booksToSearchFrom);
-
     List<DetailedBook> getDetailedBookList();
 
     List<String> getCategories();
