@@ -1,4 +1,4 @@
-package com.codecool.librarymanagement.model.jpaentity;
+package com.codecool.librarymanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

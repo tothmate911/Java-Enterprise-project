@@ -10,9 +10,7 @@ import java.util.stream.Collectors;
 
 @Component
 public interface BookDao {
-    public void initialise();
-
-    public void initializeDetailedBooks();
+    public void initialise(List<String> categories, List<DetailedBook> detailedBookList);
 
     public List<DetailedBook> sortAllBooks();
 
