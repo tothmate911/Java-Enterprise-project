@@ -7,9 +7,7 @@ import java.util.*;
 
 @Component
 public interface BookDao {
-    void initialiseBooks();
-
-    void initializeDetailedBooks();
+    public void initialise(List<String> categories, List<DetailedBook> detailedBookList);
 
     List<DetailedBook> sortAllBooks();
 
