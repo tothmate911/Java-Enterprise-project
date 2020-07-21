@@ -22,7 +22,6 @@ public class BookApiService {
         return Objects.requireNonNull(booksResponseEntity.getBody()).getBooks();
     }
 
-
     public DetailedBook getDetailedBooksByIsbn(String isbn13, String category) {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.itbook.store/1.0/books/" + isbn13;
@@ -32,4 +31,5 @@ public class BookApiService {
         Objects.requireNonNull(bookResponseEntity.getBody()).setUrl("/book/" + isbn13);
         return Objects.requireNonNull(bookResponseEntity.getBody());
     }
+
 }

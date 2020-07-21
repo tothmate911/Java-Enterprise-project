@@ -1,7 +1,9 @@
 package com.codecool.librarymanagement.model.generated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+@Data
 public class Book {
 
     private String category;
@@ -32,27 +34,4 @@ public class Book {
     @JsonProperty("url")
     private String url;
 
-    public String getImage() {
-        return image;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public String getIsbn13() {
-        return isbn13;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
 }

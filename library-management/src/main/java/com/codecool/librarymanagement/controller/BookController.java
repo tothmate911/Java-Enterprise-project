@@ -14,9 +14,12 @@ import java.util.TreeMap;
 @CrossOrigin
 public class BookController {
 
-    @Autowired
-    @Qualifier("bookDaoMem")
     private BookDao bookDao;
+
+    @Autowired
+    public void setBookApiService(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
 
     @GetMapping("/")
     public List<DetailedBook> getAllBooks() {
@@ -55,7 +58,7 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public DetailedBook getBook(@PathVariable("id") String id) {
+    public DetailedBook getBook(@PathVariable("id") Long id) {
         return bookDao.getBookById(id);
     }
 

@@ -1,34 +1,30 @@
 package com.codecool.librarymanagement.dao;
 
-import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public interface BookDao {
-    public void initialise(List<String> categories, List<DetailedBook> detailedBookList);
+    void initialise(List<String> categories, List<DetailedBook> detailedBookList);
 
-    public List<DetailedBook> sortAllBooks();
+    List<DetailedBook> sortAllBooks();
 
-    public List<DetailedBook> sortCategoryBooks(String category);
+    List<DetailedBook> sortCategoryBooks(String category);
 
-    public List<DetailedBook> getBooksByCategory(String category);
+    List<DetailedBook> getBooksByCategory(String category);
 
-    public List<DetailedBook> getBooksBySearchedString(String searchedString);
+    List<DetailedBook> getBooksBySearchedString(String searchedString);
 
-    public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search);
+    List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String search);
 
-    public List<DetailedBook> getBooksBySearchedWordFromList(String searchedString, List<DetailedBook> booksToSearchFrom);
+    List<DetailedBook> getDetailedBookList();
 
-    public List<DetailedBook> getDetailedBookList();
+    List<String> getCategories();
 
-    public List<String> getCategories();
+    DetailedBook getBookById(Long id);
 
-    public DetailedBook getBookById(String id);
+    TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 
-    public TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 }
