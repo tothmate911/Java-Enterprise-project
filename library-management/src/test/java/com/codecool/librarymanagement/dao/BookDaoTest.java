@@ -1,18 +1,13 @@
 package com.codecool.librarymanagement.dao;
 
-import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
-import com.codecool.librarymanagement.service.BookApiService;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BookDaoTest {
 
@@ -72,11 +67,6 @@ public class BookDaoTest {
     public void testGetBooksByCategoryAndSearchedString() {
         Assert.assertEquals(List.of(book1, book3), bookDao.getBooksByCategoryAndSearchedString("java", "est"));
     }
-
-//    @Test
-//    public void testGetBooksBySearchedWordFromList() {
-//        Assert.assertEquals(List.of(book1), bookDao.getBooksBySearchedWordFromList("title Java", detailedBookList));
-//    }
 
     @Test
     public void testGetBookById() {
