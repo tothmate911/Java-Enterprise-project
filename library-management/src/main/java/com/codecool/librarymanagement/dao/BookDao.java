@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
-public interface BookDao extends JpaRepository<Book, String> {
+public interface BookDao {
     public void initialise();
 
     public void initializeDetailedBooks();
