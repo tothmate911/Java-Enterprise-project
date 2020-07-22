@@ -76,7 +76,7 @@ public class BookDaoJpa implements BookDao {
         for (String category : categories) {
             String firstChar = String.valueOf(category.charAt(0));
             if (map.get(firstChar.toUpperCase()) == null) {
-                map.put(firstChar.toUpperCase(), new ArrayList<>(Collections.singletonList(category)));
+                map.put(firstChar.toUpperCase(), new ArrayList<>(Arrays.asList(category)));
             } else {
                 map.get(firstChar.toUpperCase()).add(category);
             }

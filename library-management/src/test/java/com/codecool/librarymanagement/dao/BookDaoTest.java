@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BookDaoMemTest {
+public class BookDaoTest {
 
     private BookDao bookDao;
     private List<String> categories;

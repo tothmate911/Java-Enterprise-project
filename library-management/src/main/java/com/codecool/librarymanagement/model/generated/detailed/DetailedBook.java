@@ -3,7 +3,10 @@ package com.codecool.librarymanagement.model.generated.detailed;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Data
 @Entity
@@ -27,7 +30,6 @@ public class DetailedBook {
     @JsonProperty("language")
     private String language;
 
-    @Transient
     @JsonProperty("error")
     private String error;
 
@@ -60,8 +62,8 @@ public class DetailedBook {
     @JsonProperty("authors")
     private String authors;
 
+    @Column(columnDefinition = "LONGTEXT")
     @JsonProperty("desc")
-    @Column(columnDefinition = "text")
-    private String description;
+    private String desc;
 
 }

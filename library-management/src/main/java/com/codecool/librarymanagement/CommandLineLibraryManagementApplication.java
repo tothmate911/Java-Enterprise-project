@@ -1,23 +1,23 @@
-package com.codecool.librarymanagement.service;
+package com.codecool.librarymanagement;
 
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
-import org.springframework.context.annotation.Profile;
+import com.codecool.librarymanagement.service.BookApiService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
-@Profile("production")
-public class Initializer {
+public class CommandLineLibraryManagementApplication implements CommandLineRunner {
+
     private BookDao bookDao;
     private BookApiService bookApiService;
 
-    public Initializer(BookDao bookDao, BookApiService bookApiService) {
+    public CommandLineLibraryManagementApplication(BookDao bookDao, BookApiService bookApiService) {
         this.bookDao = bookDao;
         this.bookApiService = bookApiService;
     }
@@ -25,9 +25,9 @@ public class Initializer {
     private final List<Book> bookList = new ArrayList<>();
     private List<DetailedBook> detailedBookList = new ArrayList<>();
 
-    @PostConstruct
-    public void initialise() {
-        List<String> categories = new ArrayList<>(
+    @Override
+    public void run(String... args) throws Exception {
+        List<String> categories= new ArrayList<>(
                 Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
                         "angular", "android", "django", "fsharp", "gimp", "google",
                         "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
