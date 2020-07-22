@@ -27,6 +27,7 @@ public class DetailedBook {
     @JsonProperty("language")
     private String language;
 
+    @Transient
     @JsonProperty("error")
     private String error;
 
@@ -61,6 +62,6 @@ public class DetailedBook {
 
     @JsonProperty("desc")
     @Column(columnDefinition = "text")
-    private String desc;
+    private String description;
 
 }
