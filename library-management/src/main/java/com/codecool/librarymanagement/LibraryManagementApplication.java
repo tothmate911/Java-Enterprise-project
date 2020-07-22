@@ -22,11 +22,11 @@ public class LibraryManagementApplication {
         SpringApplication.run(LibraryManagementApplication.class, args);
     }
 
-    @Bean
-    @Profile("production")
-    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService) {
-        return new CommandLineLibraryManagementApplication(bookDao, bookApiService);
-    }
+//    @Bean
+//    @Profile("production")
+//    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService) {
+//        return new CommandLineLibraryManagementApplication(bookDao, bookApiService);
+//    }
 
 //    private final BookDao bookDao;
 //    private final BookApiService bookApiService;
