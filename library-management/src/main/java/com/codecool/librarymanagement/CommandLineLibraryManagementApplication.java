@@ -4,9 +4,7 @@ import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +24,7 @@ public class CommandLineLibraryManagementApplication implements CommandLineRunne
     private List<DetailedBook> detailedBookList = new ArrayList<>();
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         List<String> categories= new ArrayList<>(
                 Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
                         "angular", "android", "django", "fsharp", "gimp", "google",
