@@ -59,8 +59,8 @@ public class DetailedBook {
     @JsonProperty("authors")
     private String authors;
 
-//    @JsonProperty("desc")
-//    @Column(length = 10485760)
-//    private String desc;
+    @JsonProperty("desc")
+    @Column(columnDefinition = "text")
+    private String desc;
 
 }
