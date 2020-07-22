@@ -22,42 +22,42 @@ public class LibraryManagementApplication {
         SpringApplication.run(LibraryManagementApplication.class, args);
     }
 
-    @Bean
-    @Profile("production")
-    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService) {
-        return new CommandLineLibraryManagementApplication(bookDao, bookApiService);
+//    @Bean
+//    @Profile("production")
+//    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService) {
+//        return new CommandLineLibraryManagementApplication(bookDao, bookApiService);
+//    }
+
+    private final BookDao bookDao;
+    private final BookApiService bookApiService;
+    private final List<Book> bookList = new ArrayList<>();
+    private List<DetailedBook> detailedBookList = new ArrayList<>();
+
+    public LibraryManagementApplication(BookDao bookDao, BookApiService bookApiService) {
+        this.bookDao = bookDao;
+        this.bookApiService = bookApiService;
     }
 
-//    private final BookDao bookDao;
-//    private final BookApiService bookApiService;
-//    private final List<Book> bookList = new ArrayList<>();
-//    private List<DetailedBook> detailedBookList = new ArrayList<>();
-//
-//    public LibraryManagementApplication(BookDao bookDao, BookApiService bookApiService) {
-//        this.bookDao = bookDao;
-//        this.bookApiService = bookApiService;
-//    }
-//
-//    @PostConstruct
-//    public void initialise() {
-//        List<String> categories = new ArrayList<>(
-//                Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
-//                        "angular", "android", "django", "fsharp", "gimp", "google",
-//                        "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
-//        );
-//
-//        for (String category : categories) {
-//            for (Book book : bookApiService.getBookByCategory(category)) {
-//                book.setCategory(category);
-//                bookList.add(book);
-//            }
-//        }
-//
-//        for (Book book : bookList) {
-//            detailedBookList.add(bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory()));
-//        }
-//
-//        bookDao.initialise(categories, detailedBookList);
-//    }
+    @PostConstruct
+    public void initialise() {
+        List<String> categories = new ArrayList<>(
+                Arrays.asList("csharp", "java", "javascript", "actionscript", "ajax",
+                        "angular", "android", "django", "fsharp", "gimp", "google",
+                        "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
+        );
+
+        for (String category : categories) {
+            for (Book book : bookApiService.getBookByCategory(category)) {
+                book.setCategory(category);
+                bookList.add(book);
+            }
+        }
+
+        for (Book book : bookList) {
+            detailedBookList.add(bookApiService.getDetailedBooksByIsbn(book.getIsbn13(), book.getCategory()));
+        }
+
+        bookDao.initialise(categories, detailedBookList);
+    }
 
 }
