@@ -3,7 +3,6 @@ package com.codecool.librarymanagement.controller;
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

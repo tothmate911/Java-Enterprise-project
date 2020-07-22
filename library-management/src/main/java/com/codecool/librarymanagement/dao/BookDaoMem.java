@@ -80,7 +80,7 @@ public class BookDaoMem implements BookDao {
         for (String category : categories) {
             String firstChar = String.valueOf(category.charAt(0));
             if (map.get(firstChar.toUpperCase()) == null) {
-                map.put(firstChar.toUpperCase(), new ArrayList<>(Arrays.asList(category)));
+                map.put(firstChar.toUpperCase(), new ArrayList<>(Collections.singletonList(category)));
             } else {
                 map.get(firstChar.toUpperCase()).add(category);
             }
