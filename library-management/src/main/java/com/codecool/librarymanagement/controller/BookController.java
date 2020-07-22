@@ -61,4 +61,18 @@ public class BookController {
         return bookDao.getBookById(id);
     }
 
+    @GetMapping("/getstatus/{id}")
+    public Boolean getStatus(@PathVariable("id") Long id) {
+        return bookDao.isAvailable(id);
+    }
+
+    @GetMapping("/borrow/{id}")
+    public Boolean borrow(@PathVariable("id") Long id) {
+        if (bookDao.isAvailable(id).equals(true)) {
+            bookDao.setAvailable(id, false);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

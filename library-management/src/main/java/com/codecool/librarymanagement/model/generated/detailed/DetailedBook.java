@@ -15,6 +15,8 @@ public class DetailedBook {
 
     private String category;
 
+    private Boolean available = true;
+
     @JsonProperty("image")
     private String image;
 

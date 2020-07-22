@@ -74,6 +74,23 @@ public class BookDaoMem implements BookDao {
                 .orElse(null);
     }
 
+    @Override
+    public Boolean isAvailable(Long id) {
+        return detailedBookList.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst()
+                .orElse(null)
+                .getAvailable();
+    }
+
+    @Override
+    public void setAvailable(Long id, Boolean status) {
+        detailedBookList.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst()
+                .orElse(null).setAvailable(status);
+    }
+
     public TreeMap<String, List<String>> orderCategoriesWithTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
 

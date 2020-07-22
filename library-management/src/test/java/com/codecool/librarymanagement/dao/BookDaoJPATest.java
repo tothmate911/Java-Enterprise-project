@@ -85,6 +85,13 @@ public class BookDaoJPATest {
     }
 
     @Test
+    public void testIsAvailable() {
+        Long id = book1.getId();
+        book1.setAvailable(false);
+        Assert.assertEquals(false, bookDao.isAvailable(id));
+    }
+
+    @Test
     public void testOrderCategoriesWithTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
         map.put("J", List.of("java"));

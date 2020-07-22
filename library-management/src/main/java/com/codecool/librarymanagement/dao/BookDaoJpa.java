@@ -70,6 +70,18 @@ public class BookDaoJpa implements BookDao {
     }
 
     @Override
+    public Boolean isAvailable(Long id) {
+        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getAvailable();
+    }
+
+    @Override
+    public void setAvailable(Long id, Boolean status) {
+        DetailedBook book = bookRepository.findById(id).orElse(null);
+        book.setAvailable(status);
+        bookRepository.save(book);
+    }
+
+    @Override
     public TreeMap<String, List<String>> orderCategoriesWithTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
 
