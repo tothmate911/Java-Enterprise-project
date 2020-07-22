@@ -1,6 +1,9 @@
 package com.codecool.librarymanagement.dao;
 
-import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.entity.Book;
+import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.Category;
+import com.codecool.librarymanagement.entity.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -37,17 +40,17 @@ public class BookDaoJPATest {
         book1 = new DetailedBook();
         book1.setTitle("Test Java Book 2");
         book1.setSubtitle("Subtitle Java");
-        book1.setCategory("java");
+        book1.setBookCategory(new BookCategory(Category.JAVA));
 
         book2 = new DetailedBook();
         book2.setTitle("Test Python Book 1");
         book2.setSubtitle("Subtitle");
-        book2.setCategory("python");
+        book2.setBookCategory(new BookCategory(Category.PYTHON));
 
         book3 = new DetailedBook();
         book3.setTitle("Test Java Book 1");
         book3.setSubtitle("Subtitle");
-        book3.setCategory("java");
+        book3.setBookCategory(new BookCategory(Category.JAVA));
 
         detailedBookList = List.of(book1, book2, book3);
         bookDao.initialise(categories, detailedBookList);

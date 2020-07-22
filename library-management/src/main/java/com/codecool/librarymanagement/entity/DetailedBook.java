@@ -1,22 +1,22 @@
-package com.codecool.librarymanagement.model.generated.detailed;
+package com.codecool.librarymanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class DetailedBook {
 
+    @ManyToOne
+    private BookCategory bookCategory;
+
+    private String category;
+
     @Id
     @GeneratedValue
     private Long id;
-
-    private String category;
 
     @JsonProperty("image")
     private String image;

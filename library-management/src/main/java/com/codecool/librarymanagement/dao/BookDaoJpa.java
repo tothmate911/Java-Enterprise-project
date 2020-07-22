@@ -1,6 +1,7 @@
 package com.codecool.librarymanagement.dao;
-
-import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.entity.Book;
+import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -49,7 +50,7 @@ public class BookDaoJpa implements BookDao {
     }
 
     @Override
-    public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String searchedString) {
+    public List<DetailedBook> getBooksByCategoryAndSearchedString(String  category, String searchedString) {
         return bookRepository.findAllByCategoryAndTitleContaining(category, searchedString);
     }
 

@@ -1,12 +1,12 @@
 package com.codecool.librarymanagement;
 
 import com.codecool.librarymanagement.dao.BookDao;
+import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.Category;
 import com.codecool.librarymanagement.model.generated.Book;
-import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.entity.DetailedBook;
 import com.codecool.librarymanagement.service.BookApiService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
