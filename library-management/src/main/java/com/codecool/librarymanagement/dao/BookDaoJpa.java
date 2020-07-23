@@ -70,8 +70,23 @@ public class BookDaoJpa implements BookDao {
     }
 
     @Override
+    public Boolean isAvailable(String isbn13) {
+        return bookRepository.findByIsbn13(isbn13).get(0).getAvailable();
+    }
+
+    @Override
     public Boolean isAvailable(Long id) {
-        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getAvailable();
+        return bookRepository.findById(id).orElse(null).getAvailable();
+    }
+
+    @Override
+    public void setAvailable(String isbn13, Boolean status) {
+        bookRepository.updateAvailable(isbn13, status);
+    }
+
+    @Override
+    public void setDate(String isbn13, Date date) {
+        bookRepository.updateDuedate(isbn13, date);
     }
 
     @Override
@@ -79,6 +94,11 @@ public class BookDaoJpa implements BookDao {
         DetailedBook book = bookRepository.findById(id).orElse(null);
         book.setAvailable(status);
         bookRepository.save(book);
+    }
+
+    @Override
+    public DetailedBook getBookByIsbn13(String isbn13) {
+        return bookRepository.findByIsbn13(isbn13).get(0);
     }
 
     @Override

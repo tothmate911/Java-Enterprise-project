@@ -75,6 +75,23 @@ public class BookDaoMem implements BookDao {
     }
 
     @Override
+    public DetailedBook getBookByIsbn13(String isbn13) {
+        return detailedBookList.stream()
+                .filter(book -> book.getIsbn13().equals(isbn13))
+                .findFirst()
+                .orElse(null);
+    }
+
+        @Override
+    public Boolean isAvailable(String isbn13) {
+        return detailedBookList.stream()
+                .filter(book -> book.getIsbn13().equals(isbn13))
+                .findFirst()
+                .orElse(null)
+                .getAvailable();
+    }
+
+    @Override
     public Boolean isAvailable(Long id) {
         return detailedBookList.stream()
                 .filter(book -> book.getId().equals(id))
@@ -84,11 +101,27 @@ public class BookDaoMem implements BookDao {
     }
 
     @Override
+    public void setAvailable(String isbn13, Boolean status) {
+        detailedBookList.stream()
+                .filter(book -> book.getIsbn13().equals(isbn13))
+                .findFirst()
+                .orElse(null).setAvailable(status);
+    }
+
+    @Override
     public void setAvailable(Long id, Boolean status) {
         detailedBookList.stream()
                 .filter(book -> book.getId().equals(id))
                 .findFirst()
                 .orElse(null).setAvailable(status);
+    }
+
+    @Override
+    public void setDate(String isbn13, Date date) {
+        detailedBookList.stream()
+                .filter(book -> book.getIsbn13().equals(isbn13))
+                .findFirst()
+                .orElse(null).setDuedate(date);
     }
 
     public TreeMap<String, List<String>> orderCategoriesWithTreeMap() {

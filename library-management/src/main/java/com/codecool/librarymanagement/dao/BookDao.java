@@ -25,9 +25,17 @@ public interface BookDao {
 
     DetailedBook getBookById(Long id);
 
+    DetailedBook getBookByIsbn13(String isbn13);
+
+    Boolean isAvailable(String isbn13);
+
     Boolean isAvailable(Long id);
 
+    void setAvailable(String isbn13, Boolean status);
+
     void setAvailable(Long id, Boolean status);
+
+    void setDate(String isbn13, Date date);
 
     TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 

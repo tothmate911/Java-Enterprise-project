@@ -76,7 +76,7 @@ public class BookDaoMemTest {
 
     @Test
     public void testIsAvailable() {
-        Long id = book1.getId();
+        String id = book1.getIsbn13();
         book1.setAvailable(false);
         Assert.assertEquals(false, bookDao.isAvailable(id));
     }
