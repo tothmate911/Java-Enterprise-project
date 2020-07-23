@@ -1,9 +1,7 @@
 package com.codecool.librarymanagement.dao;
-
-import com.codecool.librarymanagement.entity.Book;
 import com.codecool.librarymanagement.entity.BookCategory;
-import com.codecool.librarymanagement.entity.Category;
 import com.codecool.librarymanagement.entity.DetailedBook;
+import com.codecool.librarymanagement.repository.BookCategoryRepository;
 import com.codecool.librarymanagement.repository.BookRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,7 +22,13 @@ import java.util.Map;
 public class BookDaoJPATest {
 
     private BookDao bookDao;
-    @Autowired private BookRepository bookRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private BookCategoryRepository bookCategoryRepository;
+
     private List<String> categories;
     private List<DetailedBook> detailedBookList;
 

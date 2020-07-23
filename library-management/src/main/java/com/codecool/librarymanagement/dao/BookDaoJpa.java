@@ -36,7 +36,7 @@ public class BookDaoJpa implements BookDao {
 
     @Override
     public List<DetailedBook> getBooksByCategory(String category) {
-        return bookRepository.findAllByBookCategory(new BookCategory(category));
+        return bookRepository.findAllByBookCategory_Name(category);
     }
 
     @Override

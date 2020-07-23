@@ -1,5 +1,7 @@
 package com.codecool.librarymanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +29,7 @@ public class BookCategory {
     @Singular
     @OneToMany(mappedBy = "bookCategory", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<DetailedBook> detailedBooks;
 
     @Override
@@ -35,7 +38,7 @@ public class BookCategory {
         if (o == null || getClass() != o.getClass()) return false;
         BookCategory that = (BookCategory) o;
         return Objects.equals(id, that.id) &&
-                name == that.name &&
+                name.equals(that.name) &&
                 Objects.equals(detailedBooks, that.detailedBooks);
     }
 

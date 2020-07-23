@@ -17,7 +17,7 @@ public class CommandLineLibraryManagementApplication implements CommandLineRunne
 
     private final BookDao bookDao;
     private final BookApiService bookApiService;
-    private BookCategoryRepository bookCategoryRepository;
+    private final BookCategoryRepository bookCategoryRepository;
 
     public CommandLineLibraryManagementApplication(BookDao bookDao, BookApiService bookApiService, BookCategoryRepository bookCategoryRepository) {
         this.bookDao = bookDao;
