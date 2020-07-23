@@ -75,6 +75,13 @@ public class BookDaoMemTest {
     }
 
     @Test
+    public void testIsAvailable() {
+        String id = book1.getIsbn13();
+        book1.setAvailable(false);
+        Assert.assertEquals(false, bookDao.isAvailable(id));
+    }
+
+    @Test
     public void testOrderCategoriesWithTreeMap() {
         Map<String, List<String>> map = new HashMap<>();
         map.put("J", List.of("java"));

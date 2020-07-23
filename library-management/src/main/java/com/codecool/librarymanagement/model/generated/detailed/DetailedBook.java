@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
@@ -14,6 +16,10 @@ public class DetailedBook {
     private Long id;
 
     private String category;
+
+    private Boolean available = true;
+
+    private Date duedate;
 
     @JsonProperty("image")
     private String image;
