@@ -92,4 +92,5 @@ public class BookDaoJPATest {
 
         Assert.assertEquals(map, bookDao.orderCategoriesWithTreeMap());
     }
+
 }
