@@ -1,14 +1,15 @@
 package com.codecool.librarymanagement.repository;
 
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +23,7 @@ class BookRepositoryTest {
     private BookRepository bookRepository;
 
     @Autowired
-    private EntityManager entityManager;
+    private TestEntityManager entityManager;
 
     @Test
     public void saveOneSimple() {
@@ -48,6 +49,15 @@ class BookRepositoryTest {
 
         List<DetailedBook> detailedBookList = bookRepository.findAll();
         assertThat(detailedBookList).allMatch(book -> book.getError() == null);
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    public void titleShouldNotBeNull() {
+        DetailedBook detailedBook = DetailedBook.builder()
+                .subtitle("subtitle")
+                .error("this is a transient field")
+                .build();
+        bookRepository.save(detailedBook);
     }
 
 }

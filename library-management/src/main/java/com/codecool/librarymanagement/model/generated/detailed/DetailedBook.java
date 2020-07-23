@@ -37,6 +37,7 @@ public class DetailedBook {
     @JsonProperty("error")
     private String error;
 
+    @Column(nullable = false)
     @JsonProperty("title")
     private String title;
 
