@@ -1,5 +1,4 @@
 package com.codecool.librarymanagement.dao;
-import com.codecool.librarymanagement.entity.Book;
 import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.entity.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
@@ -12,7 +11,7 @@ import java.util.*;
 @Component
 public class BookDaoJpa implements BookDao {
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
     private List<String> categories = new ArrayList<>();
 
     public BookDaoJpa(BookRepository bookRepository) {
@@ -32,12 +31,12 @@ public class BookDaoJpa implements BookDao {
 
     @Override
     public List<DetailedBook> sortCategoryBooks(String category) {
-        return bookRepository.findAllByCategoryOrderByTitle(category);
+        return bookRepository.findAllByBookCategoryOrderByTitle(new BookCategory(category));
     }
 
     @Override
     public List<DetailedBook> getBooksByCategory(String category) {
-        return bookRepository.findAllByCategory(category);
+        return bookRepository.findAllByBookCategory(new BookCategory(category));
     }
 
     @Override
@@ -50,8 +49,8 @@ public class BookDaoJpa implements BookDao {
     }
 
     @Override
-    public List<DetailedBook> getBooksByCategoryAndSearchedString(String  category, String searchedString) {
-        return bookRepository.findAllByCategoryAndTitleContaining(category, searchedString);
+    public List<DetailedBook> getBooksByCategoryAndSearchedString(String category, String searchedString) {
+        return bookRepository.findAllByBookCategoryAndTitleContaining(new BookCategory(category), searchedString);
     }
 
     @Override

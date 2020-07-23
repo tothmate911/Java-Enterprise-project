@@ -12,8 +12,6 @@ public class DetailedBook {
     @ManyToOne
     private BookCategory bookCategory;
 
-    private String category;
-
     @Id
     @GeneratedValue
     private Long id;

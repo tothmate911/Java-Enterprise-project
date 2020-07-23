@@ -9,12 +9,12 @@ public interface BookRepository extends JpaRepository<DetailedBook, Long> {
 
     List<DetailedBook> findAllByOrderByTitle();
 
-    List<DetailedBook> findAllByCategoryOrderByTitle(String category);
+    List<DetailedBook> findAllByBookCategoryOrderByTitle(BookCategory category);
 
-    List<DetailedBook> findAllByCategory(String category);
+    List<DetailedBook> findAllByBookCategory(BookCategory category);
 
     List<DetailedBook> findAllByTitleContainingIgnoreCase(String searchedString);
 
-    List<DetailedBook> findAllByCategoryAndTitleContaining(String  category, String searchedString);
+    List<DetailedBook> findAllByBookCategoryAndTitleContaining(BookCategory category, String searchedString);
 
 }

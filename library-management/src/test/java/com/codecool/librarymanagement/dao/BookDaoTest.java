@@ -29,17 +29,17 @@ public class BookDaoTest {
         book1 = new DetailedBook();
         book1.setTitle("Test Java Book 2");
         book1.setSubtitle("Subtitle Java");
-        book1.setBookCategory(new BookCategory(Category.JAVA));
+        book1.setBookCategory(new BookCategory("java"));
 
         book2 = new DetailedBook();
         book2.setTitle("Test Python Book 1");
         book2.setSubtitle("Subtitle");
-        book2.setBookCategory(new BookCategory(Category.PYTHON));
+        book2.setBookCategory(new BookCategory("python"));
 
         book3 = new DetailedBook();
         book3.setTitle("Test Java Book 1");
         book3.setSubtitle("Subtitle");
-        book3.setBookCategory(new BookCategory(Category.JAVA));
+        book3.setBookCategory(new BookCategory("java"));
 
         detailedBookList = List.of(book1, book2, book3);
         bookDao.initialise(categories, detailedBookList);

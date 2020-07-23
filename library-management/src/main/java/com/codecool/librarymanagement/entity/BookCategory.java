@@ -1,7 +1,9 @@
 package com.codecool.librarymanagement.entity;
+
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -11,20 +13,36 @@ import java.util.Set;
 @Entity
 public class BookCategory {
 
+    public BookCategory(String categoryName) {
+        this.name = categoryName;
+    }
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private Category name;
+    @Column(unique = true)
+    private String name;
 
     @Singular
-    @OneToMany(mappedBy = "bookCategory", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "bookCategory", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
     private Set<DetailedBook> detailedBooks;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookCategory that = (BookCategory) o;
+        return Objects.equals(id, that.id) &&
+                name == that.name &&
+                Objects.equals(detailedBooks, that.detailedBooks);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, detailedBooks);
+    }
 }
 
 

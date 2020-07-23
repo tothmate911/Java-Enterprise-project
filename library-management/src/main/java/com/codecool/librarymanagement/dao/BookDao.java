@@ -1,6 +1,7 @@
 package com.codecool.librarymanagement.dao;
 
 import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.Category;
 import com.codecool.librarymanagement.entity.DetailedBook;
 import org.springframework.stereotype.Component;
 

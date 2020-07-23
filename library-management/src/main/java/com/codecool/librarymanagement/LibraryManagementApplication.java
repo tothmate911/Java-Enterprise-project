@@ -1,6 +1,7 @@
 package com.codecool.librarymanagement;
 
 import com.codecool.librarymanagement.dao.BookDao;
+import com.codecool.librarymanagement.repository.BookCategoryRepository;
 import com.codecool.librarymanagement.service.BookApiService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +18,7 @@ public class LibraryManagementApplication {
 
     @Bean
     @Profile("production")
-    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService) {
-        return new CommandLineLibraryManagementApplication(bookDao, bookApiService);
+    public CommandLineRunner init(BookDao bookDao, BookApiService bookApiService, BookCategoryRepository bookCategoryRepository) {
+        return new CommandLineLibraryManagementApplication(bookDao, bookApiService, bookCategoryRepository);
     }
 }
