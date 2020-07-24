@@ -1,6 +1,6 @@
 package com.codecool.librarymanagement.repository;
-
-import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.DetailedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,13 +14,15 @@ public interface BookRepository extends JpaRepository<DetailedBook, Long> {
 
     List<DetailedBook> findAllByOrderByTitle();
 
-    List<DetailedBook> findAllByCategoryOrderByTitle(String category);
+    List<DetailedBook> findAllByBookCategoryOrderByTitle(BookCategory category);
 
-    List<DetailedBook> findAllByCategory(String category);
+    //List<DetailedBook> findAllByBookCategory(BookCategory category);
+
+    List<DetailedBook> findAllByBookCategory_Name(String name);
 
     List<DetailedBook> findAllByTitleContainingIgnoreCase(String searchedString);
 
-    List<DetailedBook> findAllByCategoryAndTitleContaining(String category, String searchedString);
+    List<DetailedBook> findAllByBookCategoryAndTitleContaining(BookCategory category, String searchedString);
 
     List<DetailedBook> findByIsbn13(String isbn13);
 

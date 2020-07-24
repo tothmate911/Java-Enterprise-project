@@ -1,19 +1,20 @@
 package com.codecool.librarymanagement.model.generated;
 
+import com.codecool.librarymanagement.entity.BookCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class Book {
 
-    private String category;
+    private String bookCategory;
 
     public String getCategory() {
-        return category;
+        return bookCategory;
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        this.bookCategory = category;
     }
 
     @JsonProperty("image")
