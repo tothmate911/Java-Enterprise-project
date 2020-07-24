@@ -1,13 +1,19 @@
 package com.codecool.librarymanagement.model.generated.detailed;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class DetailedBook {
 
@@ -37,6 +43,7 @@ public class DetailedBook {
     @JsonProperty("error")
     private String error;
 
+    @Column(nullable = false)
     @JsonProperty("title")
     private String title;
 
@@ -71,3 +78,4 @@ public class DetailedBook {
     private String description;
 
 }
+
