@@ -59,7 +59,8 @@ public class BookRepositoryTest {
                 .subtitle("subtitle")
                 .error("this is a transient field")
                 .build();
-        bookRepository.save(detailedBook);
+
+        bookRepository.saveAndFlush(detailedBook);
     }
 
 }
