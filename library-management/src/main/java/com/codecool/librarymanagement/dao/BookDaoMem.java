@@ -82,7 +82,7 @@ public class BookDaoMem implements BookDao {
                 .orElse(null);
     }
 
-        @Override
+    @Override
     public Boolean isAvailable(String isbn13) {
         return detailedBookList.stream()
                 .filter(book -> book.getIsbn13().equals(isbn13))
