@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @ActiveProfiles("test")
-class BookRepositoryTest {
+public class BookRepositoryTest {
 
     @Autowired
     private BookRepository bookRepository;
@@ -57,7 +57,8 @@ class BookRepositoryTest {
                 .subtitle("subtitle")
                 .error("this is a transient field")
                 .build();
-        bookRepository.save(detailedBook);
+
+        bookRepository.saveAndFlush(detailedBook);
     }
 
 }
