@@ -1,6 +1,6 @@
 package com.codecool.librarymanagement.dao;
 import com.codecool.librarymanagement.entity.BookCategory;
-import com.codecool.librarymanagement.entity.DetailedBook;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookCategoryRepository;
 import com.codecool.librarymanagement.repository.BookRepository;
 import org.junit.Assert;

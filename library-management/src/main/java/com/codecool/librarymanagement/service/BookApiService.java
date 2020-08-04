@@ -1,11 +1,9 @@
 package com.codecool.librarymanagement.service;
 
-import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.BooksResponse;
-import com.codecool.librarymanagement.entity.DetailedBook;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookCategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

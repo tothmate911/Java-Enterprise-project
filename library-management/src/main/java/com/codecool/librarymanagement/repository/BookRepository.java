@@ -1,6 +1,6 @@
 package com.codecool.librarymanagement.repository;
 import com.codecool.librarymanagement.entity.BookCategory;
-import com.codecool.librarymanagement.entity.DetailedBook;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

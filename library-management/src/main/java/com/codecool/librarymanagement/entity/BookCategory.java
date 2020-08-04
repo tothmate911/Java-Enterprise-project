@@ -1,5 +1,6 @@
 package com.codecool.librarymanagement.entity;
 
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;

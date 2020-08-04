@@ -2,15 +2,12 @@ package com.codecool.librarymanagement.service;
 
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.entity.BookCategory;
-import com.codecool.librarymanagement.entity.Category;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.repository.BookCategoryRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import com.codecool.librarymanagement.entity.DetailedBook;
-import com.codecool.librarymanagement.repository.BookCategoryRepository;
-import com.codecool.librarymanagement.service.BookApiService;
-import org.springframework.boot.CommandLineRunner;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -19,18 +16,24 @@ import java.util.List;
 
 @Component
 @Profile("production")
-public class Initializer {
-    private BookDao bookDao;
-    private BookApiService bookApiService;
+public class Initializer implements CommandLineRunner {
+    private final BookDao bookDao;
+    private final BookApiService bookApiService;
+    private final BookCategoryRepository bookCategoryRepository;
 
-    public Initializer(BookDao bookDao, BookApiService bookApiService) {
+    public Initializer(BookDao bookDao, BookApiService bookApiService, BookCategoryRepository bookCategoryRepository) {
         this.bookDao = bookDao;
         this.bookApiService = bookApiService;
+        this.bookCategoryRepository = bookCategoryRepository;
     }
 
     private final List<Book> bookList = new ArrayList<>();
-    private List<DetailedBook> detailedBookList = new ArrayList<>();
+    private final List<DetailedBook> detailedBookList = new ArrayList<>();
 
+    @Override
+    public void run(String... args) throws Exception {
+
+    }
     @PostConstruct
     public void initialise() {
         List<String> categories = new ArrayList<>(
@@ -39,11 +42,6 @@ public class Initializer {
                         "html5", "html", "linux", "lego", "python", "ruby", "sap", "xml")
         );
 
-    private final List<Book> bookList = new ArrayList<>();
-    private final List<DetailedBook> detailedBookList = new ArrayList<>();
-
-    @Override
-    public void run(String... args) throws Exception {
 
         for (String category : categories) {
             BookCategory bookCategory = new BookCategory(category);
@@ -63,4 +61,6 @@ public class Initializer {
 
         bookDao.initialise(categories, detailedBookList);
     }
+
 }
+

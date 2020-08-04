@@ -1,8 +1,8 @@
 package com.codecool.librarymanagement.model.generated.detailed;
 
+import com.codecool.librarymanagement.entity.BookCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.time.LocalDate;

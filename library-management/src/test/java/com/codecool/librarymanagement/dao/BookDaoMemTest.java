@@ -2,7 +2,7 @@ package com.codecool.librarymanagement.dao;
 import com.codecool.librarymanagement.entity.Book;
 import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.entity.Category;
-import com.codecool.librarymanagement.entity.DetailedBook;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
