@@ -1,16 +1,14 @@
 package com.codecool.librarymanagement.controller;
 import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.model.UserRentedBooks;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 @RestController
 @RequestMapping("/books")
@@ -95,4 +93,17 @@ public class BookController {
         bookDao.setDate(isbn13, null);
         return true;
     }
+
+    @GetMapping("/admin")
+    public List<UserRentedBooks> getAllUsersWithRentedBooks() {
+        UserRentedBooks u1 = new UserRentedBooks(1, "user123", List.of(bookDao.getBookByIsbn13("9781449320171"), bookDao.getBookByIsbn13("9781430266709")));
+        UserRentedBooks u2 = new UserRentedBooks(2, "456", List.of(bookDao.getBookByIsbn13("9780596527730"), bookDao.getBookByIsbn13("9780596007010")));
+        return List.of(u1,u2);
+    }
+
+    @GetMapping("/user/{username}")
+    public List<DetailedBook> getRentedBooksByUser() {
+        return List.of(bookDao.getBookByIsbn13("9781449320171"), bookDao.getBookByIsbn13("9780596527730"));
+    }
+
 }
