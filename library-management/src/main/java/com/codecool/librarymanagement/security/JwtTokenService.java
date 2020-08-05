@@ -1,7 +1,6 @@
 package com.codecool.librarymanagement.security;
 
 import io.jsonwebtoken.*;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.security.PublicKey;
 import java.util.Base64;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 @Component
 @Slf4j
