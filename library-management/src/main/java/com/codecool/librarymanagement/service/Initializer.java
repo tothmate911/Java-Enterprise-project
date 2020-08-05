@@ -6,7 +6,6 @@ import com.codecool.librarymanagement.entity.BookUser;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookCategoryRepository;
-import com.codecool.librarymanagement.repository.BookRepository;
 import com.codecool.librarymanagement.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
