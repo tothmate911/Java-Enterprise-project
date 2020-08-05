@@ -1,5 +1,4 @@
 package com.codecool.librarymanagement.dao;
-
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.stereotype.Component;
 

@@ -1,5 +1,4 @@
 package com.codecool.librarymanagement.dao;
-
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +32,7 @@ public class BookDaoMem implements BookDao {
 
     public List<DetailedBook> getBooksByCategory(String category) {
         return detailedBookList.stream()
-                .filter(book -> book.getCategory().equals(category))
+                .filter(book -> book.getBookCategory().equals(category))
                 .collect(Collectors.toList());
     }
 

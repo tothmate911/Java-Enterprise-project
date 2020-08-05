@@ -1,6 +1,6 @@
 package com.codecool.librarymanagement.controller;
-
 import com.codecool.librarymanagement.dao.BookDao;
+import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

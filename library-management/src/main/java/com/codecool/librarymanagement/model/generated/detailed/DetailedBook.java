@@ -1,5 +1,6 @@
 package com.codecool.librarymanagement.model.generated.detailed;
 
+import com.codecool.librarymanagement.entity.BookCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class DetailedBook {
+
+    @ManyToOne
+    private BookCategory bookCategory;
 
     @Id
     @GeneratedValue
