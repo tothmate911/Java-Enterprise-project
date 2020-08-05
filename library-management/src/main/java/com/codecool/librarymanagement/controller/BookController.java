@@ -101,4 +101,9 @@ public class BookController {
         return List.of(u1,u2);
     }
 
+    @GetMapping("/user/{username}")
+    public List<DetailedBook> getRentedBooksByUser() {
+        return List.of(bookDao.getBookByIsbn13("9781449320171"), bookDao.getBookByIsbn13("9780596527730"));
+    }
+
 }
