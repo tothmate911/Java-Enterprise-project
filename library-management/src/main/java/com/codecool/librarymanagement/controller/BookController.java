@@ -3,6 +3,7 @@ import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.UserRentedBooks;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import org.hibernate.hql.internal.ast.DetailedSemanticException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -103,7 +104,22 @@ public class BookController {
 
     @GetMapping("/user/{username}")
     public List<DetailedBook> getRentedBooksByUser() {
-        return List.of(bookDao.getBookByIsbn13("9781449396794"), bookDao.getBookByIsbn13("9780596521066"));
+
+        int noOfDays = 14;
+        LocalDate localDate = LocalDate.now();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
+        Date date = calendar.getTime();
+
+        bookDao.setAvailable("9781449396794", false);
+        bookDao.setAvailable("9780596521066", false);
+        bookDao.setDate("9781449396794", date);
+        bookDao.setDate("9780596521066", date);
+        DetailedBook b1 = bookDao.getBookByIsbn13("9781449396794");
+        DetailedBook b2 = bookDao.getBookByIsbn13("9780596521066");
+
+        return List.of(b1,b2);
     }
 
 }
