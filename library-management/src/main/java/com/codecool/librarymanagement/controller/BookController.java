@@ -68,8 +68,8 @@ public class BookController {
         return bookDao.isAvailable(isbn13);
     }
 
-    @GetMapping("/borrow/{isbn13}")
-    public Boolean borrow(@PathVariable("isbn13") String isbn13) {
+    @GetMapping("/borrow/{isbn13}/{username}")
+    public Boolean borrow(@PathVariable("isbn13") String isbn13, @PathVariable("username") String username) {
         if (bookDao.isAvailable(isbn13)) {
             bookDao.setAvailable(isbn13, false);
 
@@ -96,14 +96,14 @@ public class BookController {
 
     @GetMapping("/admin")
     public List<UserRentedBooks> getAllUsersWithRentedBooks() {
-        UserRentedBooks u1 = new UserRentedBooks(1, "user123", List.of(bookDao.getBookByIsbn13("9781449320171"), bookDao.getBookByIsbn13("9781430266709")));
-        UserRentedBooks u2 = new UserRentedBooks(2, "456", List.of(bookDao.getBookByIsbn13("9780596527730"), bookDao.getBookByIsbn13("9780596007010")));
+        UserRentedBooks u1 = new UserRentedBooks(1, "user123", List.of(bookDao.getBookByIsbn13("9781449396794"), bookDao.getBookByIsbn13("9780596521066")));
+        UserRentedBooks u2 = new UserRentedBooks(2, "456", List.of(bookDao.getBookByIsbn13("9780134123486"), bookDao.getBookByIsbn13("9780596007010")));
         return List.of(u1,u2);
     }
 
     @GetMapping("/user/{username}")
     public List<DetailedBook> getRentedBooksByUser() {
-        return List.of(bookDao.getBookByIsbn13("9781449320171"), bookDao.getBookByIsbn13("9780596527730"));
+        return List.of(bookDao.getBookByIsbn13("9781449396794"), bookDao.getBookByIsbn13("9780596521066"));
     }
 
 }
