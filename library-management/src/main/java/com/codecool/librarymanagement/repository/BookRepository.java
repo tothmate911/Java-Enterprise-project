@@ -36,4 +36,10 @@ public interface BookRepository extends JpaRepository<DetailedBook, Long> {
     @Query("UPDATE DetailedBook d SET d.duedate=:duedate WHERE d.isbn13=:isbn13")
     void updateDuedate(@Param("isbn13") String isbn13, @Param("duedate") Date date);
 
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("UPDATE DetailedBook detailedBook SET detailedBook.bookUser.id=: userId WHERE detailedBook.isbn13 =: isbn13")
+    void updateUserId(@Param("book_user_id") String  userName, @Param("isbn13") String isbn13);
+
 }

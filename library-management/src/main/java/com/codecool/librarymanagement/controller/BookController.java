@@ -3,6 +3,8 @@ import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.UserRentedBooks;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.repository.BookRepository;
+import com.codecool.librarymanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,14 @@ import java.util.*;
 public class BookController {
 
     private BookDao bookDao;
+    private final UserRepository userRepository;
+    private final BookRepository bookRepository;
+
+    public BookController(BookDao bookDao, UserRepository userRepository, BookRepository bookRepository) {
+        this.bookDao = bookDao;
+        this.userRepository = userRepository;
+        this.bookRepository = bookRepository;
+    }
 
     @Autowired
     public void setBookApiService(BookDao bookDao) {
@@ -63,9 +73,14 @@ public class BookController {
         return bookDao.getBookById(id);
     }
 
-    @GetMapping("/{isbn13}")
-    public Boolean borrow(@PathVariable("isbn13") String isbn13) {
+    @GetMapping("/borrow/{isbn13}/{username}")
+    public Boolean borrow(@PathVariable("isbn13") String isbn13, @PathVariable("username") String userName) {
         if (bookDao.isAvailable(isbn13)) {
+
+            DetailedBook tempBook = bookDao.getBookByIsbn13(isbn13);
+            tempBook.setBookUser(userRepository.findByUsername(userName).orElse(null));
+            //bookRepository.saveAndFlush(tempBook);
+
             bookDao.setAvailable(isbn13, false);
 
             int noOfDays = 14;
@@ -87,7 +102,7 @@ public class BookController {
         return bookDao.isAvailable(isbn13);
     }
 
-    @GetMapping("/cancel/{isbn13}")
+    @GetMapping("/borrow/cancel/{isbn13}")
     public Boolean cancelBorrowing(@PathVariable("isbn13") String isbn13) {
         bookDao.setAvailable(isbn13, true);
         bookDao.setDate(isbn13, null);

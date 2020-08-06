@@ -38,4 +38,7 @@ public interface BookDao {
 
     TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 
+    void setUserIdForBooks(String userName, String isbn13);
+
+
 }

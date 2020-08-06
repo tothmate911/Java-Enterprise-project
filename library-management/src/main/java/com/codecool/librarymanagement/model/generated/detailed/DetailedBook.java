@@ -1,11 +1,9 @@
 package com.codecool.librarymanagement.model.generated.detailed;
 
 import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.BookUser;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,6 +17,12 @@ import java.util.Date;
 public class DetailedBook {
 
     @ManyToOne
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private BookUser bookUser;
+
+    @ManyToOne
+    @EqualsAndHashCode.Exclude
     private BookCategory bookCategory;
 
     @Id

@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().denyAll()
             .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenService), UsernamePasswordAuthenticationFilter.class);
-
     }
 
     @Bean

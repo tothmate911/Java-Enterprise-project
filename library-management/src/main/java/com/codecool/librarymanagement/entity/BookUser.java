@@ -1,8 +1,6 @@
 package com.codecool.librarymanagement.entity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -30,4 +28,10 @@ public class BookUser {
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
+
+    @Singular
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "bookUser", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    private List<DetailedBook> rentedBooks = new ArrayList<>();
 }

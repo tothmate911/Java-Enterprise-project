@@ -136,4 +136,10 @@ public class BookDaoMem implements BookDao {
         }
         return new TreeMap<>(map);
     }
+
+    @Override
+    public void setUserIdForBooks(String userName, String isbn13) {
+
+    }
+
 }

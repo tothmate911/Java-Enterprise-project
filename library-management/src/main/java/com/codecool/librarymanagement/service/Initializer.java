@@ -6,6 +6,7 @@ import com.codecool.librarymanagement.entity.BookUser;
 import com.codecool.librarymanagement.model.generated.Book;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookCategoryRepository;
+import com.codecool.librarymanagement.repository.BookRepository;
 import com.codecool.librarymanagement.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -25,14 +26,19 @@ public class Initializer implements CommandLineRunner {
     private final BookApiService bookApiService;
     private final BookCategoryRepository bookCategoryRepository;
     private final UserRepository userRepository;
+    private final BookRepository bookRepository;
 
     private final PasswordEncoder passwordEncoder;
 
-    public Initializer(BookDao bookDao, BookApiService bookApiService, BookCategoryRepository bookCategoryRepository, UserRepository userRepository) {
+    public Initializer(BookDao bookDao, BookApiService bookApiService,
+                       BookCategoryRepository bookCategoryRepository, UserRepository userRepository,
+                       BookRepository bookRepository) {
         this.bookDao = bookDao;
         this.bookApiService = bookApiService;
         this.bookCategoryRepository = bookCategoryRepository;
         this.userRepository = userRepository;
+        this.bookRepository = bookRepository;
+
 
         passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
