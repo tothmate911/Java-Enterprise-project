@@ -70,6 +70,7 @@ public class AuthController {
             userRepository.save(BookUser.builder()
                     .username(data.getUsername())
                     .password(passwordEncoder.encode(data.getPassword()))
+                    .email(data.getEmail())
                     .roles(Arrays.asList("ROLE_USER"))
                     .build()
             );

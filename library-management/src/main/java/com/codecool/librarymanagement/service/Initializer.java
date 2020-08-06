@@ -46,6 +46,7 @@ public class Initializer implements CommandLineRunner {
         userRepository.save(BookUser.builder()
                 .username("testUser")
                 .password(passwordEncoder.encode("testUserPassword"))
+                .email("test@test.com")
                 .roles(Arrays.asList("ROLE_USER"))
                 .build()
         );
@@ -53,6 +54,7 @@ public class Initializer implements CommandLineRunner {
         userRepository.save(BookUser.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("adminPassword"))
+                .email("admin@admin.com")
                 .roles(Arrays.asList("ROLE_ADMIN", "ROLE_USER"))
                 .build()
         );
@@ -60,6 +62,7 @@ public class Initializer implements CommandLineRunner {
         userRepository.save(BookUser.builder()
                 .username("Balazs")
                 .password(passwordEncoder.encode("Balazs"))
+                .email("balazs@balazs.com")
                 .roles(Arrays.asList("ROLE_USER"))
                 .build()
         );

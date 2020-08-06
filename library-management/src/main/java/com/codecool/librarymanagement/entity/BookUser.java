@@ -27,6 +27,9 @@ public class BookUser {
     @NotEmpty
     private String password;
 
+    @NotEmpty
+    private String email;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
