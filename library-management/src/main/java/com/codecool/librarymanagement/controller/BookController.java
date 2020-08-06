@@ -63,7 +63,12 @@ public class BookController {
         return bookDao.getBookById(id);
     }
 
-    @GetMapping("/{isbn13}")
+    @GetMapping("/getstatus/{isbn13}")
+    public Boolean getStatus(@PathVariable("isbn13") String isbn13) {
+        return bookDao.isAvailable(isbn13);
+    }
+
+    @GetMapping("/borrow/{isbn13}")
     public Boolean borrow(@PathVariable("isbn13") String isbn13) {
         if (bookDao.isAvailable(isbn13)) {
             bookDao.setAvailable(isbn13, false);
@@ -82,12 +87,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/getstatus/{isbn13}")
-    public Boolean getStatus(@PathVariable("isbn13") String isbn13) {
-        return bookDao.isAvailable(isbn13);
-    }
-
-    @GetMapping("/cancel/{isbn13}")
+    @GetMapping("/borrow/cancel/{isbn13}")
     public Boolean cancelBorrowing(@PathVariable("isbn13") String isbn13) {
         bookDao.setAvailable(isbn13, true);
         bookDao.setDate(isbn13, null);
