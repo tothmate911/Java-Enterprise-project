@@ -73,6 +73,11 @@ public class BookController {
         return bookDao.getBookById(id);
     }
 
+    @GetMapping("/borrow/book/{isbn13}")
+    public DetailedBook getBookByIsbn(@PathVariable("isbn13") String isbn13){
+        return bookDao.getBookByIsbn13(isbn13);
+    }
+
     @GetMapping("/borrow/{isbn13}/{username}")
     public Boolean borrow(@PathVariable("isbn13") String isbn13, @PathVariable("username") String userName) {
         if (bookDao.isAvailable(isbn13)) {
