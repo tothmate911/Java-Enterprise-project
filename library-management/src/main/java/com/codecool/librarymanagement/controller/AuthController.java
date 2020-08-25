@@ -41,7 +41,6 @@ public class AuthController {
         passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-
     @PostMapping("/signin")
     public ResponseEntity signIn(@RequestBody UserCredentials data) {
         System.out.println(data);
