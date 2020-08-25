@@ -38,4 +38,5 @@ public interface BookDao {
 
     TreeMap<String, List<String>> orderCategoriesWithTreeMap();
 
+    void borrow(String isbn13, String username);
 }

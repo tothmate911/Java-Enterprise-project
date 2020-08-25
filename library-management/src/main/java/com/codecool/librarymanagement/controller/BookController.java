@@ -3,6 +3,8 @@ import com.codecool.librarymanagement.dao.BookDao;
 import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.UserRentedBooks;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
+import com.codecool.librarymanagement.repository.BookRepository;
+import com.codecool.librarymanagement.repository.UserRepository;
 import org.hibernate.hql.internal.ast.DetailedSemanticException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,8 @@ import java.util.*;
 @CrossOrigin
 public class BookController {
 
-    private BookDao bookDao;
-
     @Autowired
-    public void setBookApiService(BookDao bookDao) {
-        this.bookDao = bookDao;
-    }
+    private BookDao bookDao;
 
     @GetMapping("/")
     public List<DetailedBook> getAllBooks() {
@@ -82,6 +80,9 @@ public class BookController {
             Date date = calendar.getTime();
 
             bookDao.setDate(isbn13, date);
+            bookDao.borrow(isbn13, username);
+
+
             return true;
         } else {
             return false;

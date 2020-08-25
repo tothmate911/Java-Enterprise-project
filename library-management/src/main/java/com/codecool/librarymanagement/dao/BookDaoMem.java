@@ -136,4 +136,9 @@ public class BookDaoMem implements BookDao {
         }
         return new TreeMap<>(map);
     }
+
+    @Override
+    public void borrow(String isbn13, String username) {
+
+    }
 }

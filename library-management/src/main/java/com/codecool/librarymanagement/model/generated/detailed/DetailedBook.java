@@ -1,6 +1,7 @@
 package com.codecool.librarymanagement.model.generated.detailed;
 
 import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.BookUser;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -80,6 +81,9 @@ public class DetailedBook {
     @JsonProperty("desc")
     @Column(columnDefinition = "text")
     private String description;
+
+    @ManyToOne
+    private BookUser user;
 
 }
 

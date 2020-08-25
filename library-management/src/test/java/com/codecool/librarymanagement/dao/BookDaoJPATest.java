@@ -3,6 +3,7 @@ import com.codecool.librarymanagement.entity.BookCategory;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookCategoryRepository;
 import com.codecool.librarymanagement.repository.BookRepository;
+import com.codecool.librarymanagement.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,9 @@ public class BookDaoJPATest {
     @Autowired
     private BookCategoryRepository bookCategoryRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     private List<String> categories;
     private List<DetailedBook> detailedBookList;
 
@@ -38,7 +42,7 @@ public class BookDaoJPATest {
 
     @Before
     public void setup() {
-        bookDao = new BookDaoJpa(bookRepository);
+        bookDao = new BookDaoJpa(bookRepository, userRepository);
         categories = List.of("python", "java");
 
         book1 = new DetailedBook();

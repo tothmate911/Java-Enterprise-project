@@ -1,4 +1,5 @@
 package com.codecool.librarymanagement.entity;
+import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,4 +34,11 @@ public class BookUser {
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE})
+    private List<DetailedBook> rentedBooks;
+
+    public void rentBook(DetailedBook detailedBook) {
+        rentedBooks.add(detailedBook);
+    }
 }

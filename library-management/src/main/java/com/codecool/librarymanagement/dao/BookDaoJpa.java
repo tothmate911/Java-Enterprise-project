@@ -1,7 +1,9 @@
 package com.codecool.librarymanagement.dao;
 import com.codecool.librarymanagement.entity.BookCategory;
+import com.codecool.librarymanagement.entity.BookUser;
 import com.codecool.librarymanagement.model.generated.detailed.DetailedBook;
 import com.codecool.librarymanagement.repository.BookRepository;
+import com.codecool.librarymanagement.repository.UserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,13 @@ import java.util.*;
 public class BookDaoJpa implements BookDao {
 
     private final BookRepository bookRepository;
+    private UserRepository userRepository;
+
     private List<String> categories = new ArrayList<>();
 
-    public BookDaoJpa(BookRepository bookRepository) {
+    public BookDaoJpa(BookRepository bookRepository, UserRepository userRepository) {
         this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -114,5 +119,19 @@ public class BookDaoJpa implements BookDao {
             }
         }
         return new TreeMap<>(map);
+    }
+
+    @Override
+    public void borrow(String isbn13, String username) {
+        DetailedBook detailedBook = bookRepository.findByIsbn13(isbn13).get(0);
+        BookUser bookUser = userRepository.findByUsername(username).orElse(null);
+
+        if (bookUser == null) {
+            System.out.println("user not found");
+        } else {
+            bookUser.rentBook(detailedBook);
+            userRepository.saveAndFlush(bookUser);
+        }
+
     }
 }

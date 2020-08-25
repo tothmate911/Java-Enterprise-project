@@ -44,6 +44,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity signIn(@RequestBody UserCredentials data) {
+        System.out.println(data);
         try {
             String username = data.getUsername();
             Authentication authentication = authenticationManager.authenticate(
